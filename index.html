@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Chi ha pagato - Conti Condivisi</title>
+
+  <!-- Google Fonts: Poppins (testi) e Material Symbols Rounded (icone) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+
+  <!-- Foglio di stile CSS esterno -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- =========================================================
+       CONTENITORE PRINCIPALE (Mobile-first, max 420px)
+       ========================================================= -->
+  <div class="app-container">
+
+    <!-- 1. HEADER DELL'APPLICAZIONE -->
+    <header class="app-header">
+      <div class="brand-group">
+        <h1 class="brand-title">
+          Pari
+          <span class="brand-dot" aria-hidden="true"></span>
+        </h1>
+        <span class="brand-badge">v1.0</span>
+      </div>
+      <button id="info-btn" class="btn-icon-circle" type="button" aria-label="Informazioni sull'applicazione">
+        <span class="material-symbols-rounded">info</span>
+      </button>
+    </header>
+
+    <!-- AREA PRINCIPALE CONTENUTI -->
+    <main class="app-main">
+
+      <!-- 2. SEZIONE "CHI C'È" (PARTECIPANTI) -->
+      <section class="section-people" aria-labelledby="people-heading">
+        <div class="section-header">
+          <h2 id="people-heading" class="section-title">Chi c'è</h2>
+          <span id="people-count" class="counter-badge">0 persone</span>
+        </div>
+
+        <!-- Lista dei chip con i partecipanti -->
+        <div id="people-chips" class="people-chips-container" aria-live="polite"></div>
+
+        <!-- Input per aggiungere un nuovo amico -->
+        <div class="add-person-form">
+          <input id="person-name-input" class="input-text-pill" type="text" placeholder="Aggiungi un amico"
+            maxlength="25" autocomplete="off" aria-label="Nome del nuovo partecipante" />
+          <button id="add-person-btn" class="btn-add-icon" type="button" aria-label="Aggiungi partecipante alla lista">
+            <span class="material-symbols-rounded">add</span>
+          </button>
+        </div>
+
+        <!-- Messaggio di avviso per errori sulle persone -->
+        <div id="person-feedback" class="feedback-message" role="alert"></div>
+      </section>
+
+      <!-- 3. CARD "NUOVA SPESA" -->
+      <section class="card" aria-labelledby="new-expense-heading">
+        <div class="card-header">
+          <h3 id="new-expense-heading" class="card-title">Nuova spesa</h3>
+          <span class="card-badge">Inserimento rapido</span>
+        </div>
+
+        <!-- Campo: Descrizione della spesa -->
+        <div class="form-group">
+          <label for="expense-desc-input" class="form-label">Cosa hai comprato</label>
+          <input id="expense-desc-input" class="input-field" type="text" placeholder="Es. Cena in spiaggia"
+            autocomplete="off" />
+        </div>
+
+        <!-- Griglia: Importo e Pagato da -->
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="expense-amount-input" class="form-label">Importo</label>
+            <div class="input-currency-wrapper">
+              <span class="currency-symbol" aria-hidden="true">€</span>
+              <input id="expense-amount-input" class="input-field" type="text" inputmode="decimal" placeholder="0,00"
+                autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="expense-payer-select" class="form-label">Pagato da</label>
+            <div class="select-wrapper">
+              <select id="expense-payer-select" class="select-field" aria-label="Seleziona chi ha pagato la spesa">
+                <!-- Opzioni popolate dinamicamente -->
+              </select>
+              <span class="material-symbols-rounded select-arrow" aria-hidden="true">expand_more</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Campo: Dividi tra (Chip interattivi) -->
+        <div class="form-group">
+          <label id="split-label" class="form-label">Dividi tra (0 selezionati)</label>
+          <div id="split-chips-container" class="split-chips-grid" role="group" aria-labelledby="split-label">
+            <!-- Pulsanti chip generati dinamicamente -->
+          </div>
+        </div>
+
+        <!-- Pulsante di invio della spesa -->
+        <button id="add-expense-btn" class="btn-primary-cta" type="button">
+          <span class="material-symbols-rounded">add_circle</span>
+          <span>Aggiungi spesa</span>
+        </button>
+
+        <!-- Messaggio di errore per validazione spesa -->
+        <div id="expense-feedback" class="feedback-message" role="alert"></div>
+      </section>
+
+      <!-- 4. SEZIONE "SPESE" (LISTA DELLE TRANSAZIONI) -->
+      <section class="section-expenses" aria-labelledby="expenses-heading">
+        <div class="section-header">
+          <h2 id="expenses-heading" class="section-title">Spese</h2>
+          <div class="expenses-total-group">
+            <span class="expenses-total-label">Totale:</span>
+            <span id="expenses-total-amount" class="expenses-total-amount">0,00 €</span>
+          </div>
+        </div>
+
+        <!-- Contenitore della lista delle spese -->
+        <div id="expenses-list" class="expenses-list" aria-live="polite">
+          <!-- Righe generate da JavaScript -->
+        </div>
+      </section>
+
+      <!-- 5. CARD "CONTI DA SALDARE" (TURCHESE) -->
+      <section class="card-settlement" aria-labelledby="settlement-heading">
+        <!-- Decorazione grafica estiva -->
+        <div class="settlement-bg-circle" aria-hidden="true"></div>
+
+        <div class="settlement-header">
+          <div class="settlement-title-group">
+            <div class="settlement-icon-badge" aria-hidden="true">
+              <span class="material-symbols-rounded">sync_alt</span>
+            </div>
+            <h3 id="settlement-heading" class="settlement-title">Conti da saldare</h3>
+          </div>
+          <span class="settlement-tag">Algoritmo Min-Transfer</span>
+        </div>
+
+        <!-- Lista dei debiti/trasferimenti netti da effettuare -->
+        <div id="settlement-list" class="settlement-list" aria-live="polite">
+          <!-- Righe generate da JavaScript -->
+        </div>
+
+        <!-- Riepilogo inferiore della card -->
+        <div class="settlement-footer">
+          <span id="settlement-per-person">Quota a testa: 0,00 €</span>
+          <span id="settlement-transfers-count">· 0 transazioni nette</span>
+        </div>
+      </section>
+
+      <!-- 6. AZIONE SECONDARIA (AZZERA SPESE) -->
+      <div class="reset-section">
+        <button id="reset-expenses-btn" class="btn-reset" type="button">
+          <span class="material-symbols-rounded">restart_alt</span>
+          <span>Azzera spese</span>
+        </button>
+        <span class="reset-hint">Cancella tutte le transazioni registrate</span>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- MODALE INFORMATIVO -->
+  <div id="info-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="info-modal-title">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="info-modal-title">Come funziona Pari</h3>
+        <button id="close-modal-btn" class="btn-icon-circle" type="button" aria-label="Chiudi finestra informazioni">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><strong>1. Persone:</strong> Aggiungi gli amici con cui stai condividendo le spese delle vacanze o delle
+          uscite.</p>
+        <p><strong>2. Spese:</strong> Registra ogni acquisto indicando chi ha pagato e seleziona con un tocco tra chi
+          dividerlo.</p>
+        <p><strong>3. Conti esatti:</strong> Pari calcola al centesimo il saldo di tutti e riduce al minimo
+          indispensabile il numero di scambi di denaro da effettuare!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script JavaScript esterno -->
+  <script src="script.js"></script>
+</body>
+
+</html>

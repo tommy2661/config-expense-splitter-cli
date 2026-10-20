@@ -1,0 +1,912 @@
+/* =========================================================
+   VARIABILI CSS (:root)
+   Palette costiera, font, raggi di curvatura e ombre
+   ========================================================= */
+:root {
+  /* Colori principali */
+  --color-sand: #FFF8EF;          /* Sfondo caldo sabbia */
+  --color-petrol: #1B2B34;        /* Testo scuro blu petrolio */
+  --color-petrol-muted: rgba(27, 43, 52, 0.65);
+  --color-petrol-light: rgba(27, 43, 52, 0.4);
+  --color-sea: #0FA3B1;           /* Turchese mare primario */
+  --color-sea-hover: #0D8E9B;
+  --color-sea-light: #E6F8F9;     /* Fondo turchese chiaro */
+  --color-coral: #FF7A59;         /* Corallo accento */
+  --color-coral-hover: #F26B49;
+  --color-coral-light: rgba(255, 122, 89, 0.12);
+  --color-white: #FFFFFF;
+  --color-input-bg: #FBF9F5;
+  
+  /* Bordi */
+  --color-border: #E8E2D8;
+  --color-border-card: #ECE6DC;
+  --color-border-subtle: #F2EDE4;
+
+  /* Stato di errore */
+  --color-error: #BA1A1A;
+  --color-error-bg: #FFDAD6;
+
+  /* Ombre morbide */
+  --shadow-soft: 0 4px 20px -2px rgba(27, 43, 52, 0.06);
+  --shadow-highlight: 0 8px 24px -4px rgba(15, 163, 177, 0.24);
+  --shadow-coral: 0 4px 14px 0 rgba(255, 122, 89, 0.3);
+  --shadow-sm: 0 1px 3px rgba(27, 43, 52, 0.08);
+
+  /* Raggi di curvatura (Border radius) */
+  --radius-pill: 9999px;
+  --radius-card: 20px;
+  --radius-button: 16px;
+  --radius-input: 12px;
+
+  /* Tipografia */
+  --font-family: 'Poppins', sans-serif;
+}
+
+/* =========================================================
+   RESET E STILI DI BASE
+   ========================================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--color-sand);
+  color: var(--color-petrol);
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.4;
+}
+
+/* Nasconde la scrollbar pur mantenendo lo scroll */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Impostazione icone Google */
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+  user-select: none;
+}
+
+/* =========================================================
+   LAYOUT MOBILE-FIRST (Centrato su desktop max 420px)
+   ========================================================= */
+.app-container {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.25rem 2.5rem;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0 1rem;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-petrol);
+  display: flex;
+  align-items: center;
+}
+
+.brand-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background-color: var(--color-coral);
+  border-radius: var(--radius-pill);
+  margin-left: 0.35rem;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+}
+
+.brand-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-sea);
+  background-color: var(--color-sea-light);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
+}
+
+.btn-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-petrol);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-icon-circle:hover {
+  background-color: var(--color-sea-light);
+  color: var(--color-sea);
+  border-color: var(--color-sea);
+}
+
+.btn-icon-circle:active {
+  transform: scale(0.95);
+}
+
+/* =========================================================
+   MAIN E SEZIONI
+   ========================================================= */
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.15rem;
+  margin-bottom: 0.6rem;
+}
+
+.section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-petrol-muted);
+}
+
+.counter-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-petrol-muted);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+}
+
+/* =========================================================
+   SEZIONE: CHI C'È (PERSONE)
+   ========================================================= */
+.people-chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  min-height: 34px;
+}
+
+.person-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem 0.35rem 0.85rem;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-petrol);
+  transition: transform 0.15s ease;
+}
+
+.person-chip:hover {
+  border-color: #d8cfc3;
+}
+
+.chip-delete-btn {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-petrol-light);
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.chip-delete-btn:hover {
+  color: var(--color-coral);
+  background-color: var(--color-coral-light);
+}
+
+.chip-delete-btn .material-symbols-rounded {
+  font-size: 14px;
+}
+
+.add-person-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.input-text-pill {
+  flex: 1;
+  height: 44px;
+  padding: 0 1rem;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  color: var(--color-petrol);
+  box-shadow: var(--shadow-sm);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-text-pill::placeholder {
+  color: var(--color-petrol-light);
+}
+
+.input-text-pill:focus {
+  border-color: var(--color-sea);
+  box-shadow: 0 0 0 3px rgba(15, 163, 177, 0.15);
+}
+
+.btn-add-icon {
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-coral);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-button);
+  box-shadow: var(--shadow-coral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-add-icon:hover {
+  background-color: var(--color-coral-hover);
+}
+
+.btn-add-icon:active {
+  transform: scale(0.95);
+}
+
+.btn-add-icon .material-symbols-rounded {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.feedback-message {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  margin-top: 0.35rem;
+  display: none;
+}
+
+.feedback-message.error {
+  display: block;
+  color: var(--color-error);
+  background-color: var(--color-error-bg);
+  border: 1px solid rgba(186, 26, 26, 0.2);
+}
+
+/* =========================================================
+   CARD BIANCA: NUOVA SPESA
+   ========================================================= */
+.card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-card);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-petrol);
+  letter-spacing: -0.01em;
+}
+
+.card-badge {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-sea);
+  background-color: var(--color-sea-light);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-pill);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-petrol-muted);
+  padding-left: 0.25rem;
+}
+
+.input-field {
+  height: 44px;
+  padding: 0 0.85rem;
+  background-color: var(--color-input-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-input);
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  color: var(--color-petrol);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input-field::placeholder {
+  color: var(--color-petrol-light);
+}
+
+.input-field:focus {
+  background-color: var(--color-white);
+  border-color: var(--color-sea);
+  box-shadow: 0 0 0 3px rgba(15, 163, 177, 0.15);
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.input-currency-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-petrol-muted);
+  pointer-events: none;
+}
+
+.input-currency-wrapper .input-field {
+  width: 100%;
+  padding-left: 2rem;
+  font-weight: 600;
+}
+
+.select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select-field {
+  width: 100%;
+  height: 44px;
+  padding: 0 2rem 0 0.85rem;
+  background-color: var(--color-input-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-input);
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-petrol);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.select-field:focus {
+  background-color: var(--color-white);
+  border-color: var(--color-sea);
+  box-shadow: 0 0 0 3px rgba(15, 163, 177, 0.15);
+}
+
+.select-arrow {
+  position: absolute;
+  right: 0.65rem;
+  pointer-events: none;
+  color: var(--color-petrol-muted);
+  font-size: 18px;
+}
+
+/* Griglia chip selezione "Dividi tra" */
+.split-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+}
+
+.btn-split-chip {
+  height: 34px;
+  padding: 0 0.4rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-input-bg);
+  color: var(--color-petrol-muted);
+  font-family: var(--font-family);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn-split-chip:hover {
+  border-color: var(--color-sea);
+}
+
+.btn-split-chip.selected {
+  background-color: var(--color-sea);
+  color: var(--color-white);
+  border-color: var(--color-sea);
+  box-shadow: 0 2px 6px rgba(15, 163, 177, 0.25);
+}
+
+.btn-split-chip:active {
+  transform: scale(0.96);
+}
+
+.btn-primary-cta {
+  width: 100%;
+  height: 48px;
+  margin-top: 0.25rem;
+  background-color: var(--color-sea);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-highlight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-primary-cta:hover {
+  background-color: var(--color-sea-hover);
+}
+
+.btn-primary-cta:active {
+  transform: scale(0.98);
+}
+
+.btn-primary-cta .material-symbols-rounded {
+  font-size: 20px;
+}
+
+/* =========================================================
+   SEZIONE: LISTA SPESE
+   ========================================================= */
+.expenses-total-group {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.expenses-total-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-petrol-muted);
+}
+
+.expenses-total-amount {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-petrol);
+  letter-spacing: -0.01em;
+}
+
+.expenses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.expense-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-card);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+.expense-item:hover {
+  border-color: rgba(15, 163, 177, 0.35);
+}
+
+.expense-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding-right: 0.5rem;
+}
+
+.expense-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-petrol);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.expense-sub {
+  font-size: 0.75rem;
+  color: var(--color-petrol-muted);
+  margin-top: 0.15rem;
+}
+
+.expense-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.expense-amount {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-petrol);
+  letter-spacing: -0.01em;
+}
+
+.btn-delete-expense {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: transparent;
+  color: var(--color-petrol-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-delete-expense:hover {
+  color: var(--color-coral);
+  background-color: #fee2e2;
+}
+
+.btn-delete-expense .material-symbols-rounded {
+  font-size: 16px;
+}
+
+.empty-state {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  background-color: var(--color-white);
+  border: 1px dashed var(--color-border);
+  border-radius: 16px;
+  color: var(--color-petrol-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* =========================================================
+   CARD TURCHESE: CONTI DA SALDARE (Algoritmo Min-Transfer)
+   ========================================================= */
+.card-settlement {
+  position: relative;
+  background-color: var(--color-sea);
+  color: var(--color-white);
+  border-radius: var(--radius-card);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-highlight);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+/* Decorazione curva morbida di fondo */
+.settlement-bg-circle {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.settlement-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.settlement-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.settlement-icon-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settlement-icon-badge .material-symbols-rounded {
+  color: var(--color-white);
+  font-size: 18px;
+}
+
+.settlement-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: -0.01em;
+}
+
+.settlement-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.settlement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.settlement-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.9rem;
+  background-color: var(--color-white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  color: var(--color-petrol);
+}
+
+.settlement-parties {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-petrol);
+}
+
+.settlement-parties .material-symbols-rounded {
+  color: var(--color-sea);
+  font-size: 16px;
+}
+
+.settlement-badge-amount {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-coral);
+  color: var(--color-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-coral);
+}
+
+.settlement-empty-message {
+  padding: 1.25rem 0.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+}
+
+.settlement-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.25rem;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* =========================================================
+   SEZIONE AZIONE SECONDARIA (AZZERA SPESE)
+   ========================================================= */
+.reset-section {
+  margin-top: 0.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-reset {
+  width: 100%;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 122, 89, 0.5);
+  background-color: rgba(255, 255, 255, 0.75);
+  color: var(--color-coral);
+  font-family: var(--font-family);
+  font-size: 0.75rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-reset:hover {
+  background-color: var(--color-coral);
+  color: var(--color-white);
+}
+
+.btn-reset:active {
+  transform: scale(0.98);
+}
+
+.btn-reset .material-symbols-rounded {
+  font-size: 18px;
+}
+
+.reset-hint {
+  font-size: 11px;
+  color: var(--color-petrol-muted);
+}
+
+/* =========================================================
+   MODALE INFORMAZIONI
+   ========================================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(27, 43, 52, 0.45);
+  backdrop-filter: blur(3px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-card);
+  width: 100%;
+  max-width: 380px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 32px rgba(27, 43, 52, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-bottom: 0.75rem;
+}
+
+.modal-header h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-petrol);
+}
+
+.modal-body {
+  font-size: 0.85rem;
+  color: var(--color-petrol-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  line-height: 1.5;
+}
+
+.modal-body strong {
+  color: var(--color-petrol);
+}

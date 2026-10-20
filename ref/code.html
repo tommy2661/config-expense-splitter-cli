@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Pari - Conti Condivisi</title>
+<!-- Google Fonts: Poppins -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand: '#FFF8EF',
+            petrol: '#1B2B34',
+            sea: '#0FA3B1',
+            coral: '#FF7A59',
+            'sea-light': '#E6F8F9',
+            'sand-card': '#FFFDF9',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
+          boxShadow: {
+            soft: '0 4px 20px -2px rgba(27, 43, 52, 0.06)',
+            highlight: '0 8px 24px -4px rgba(15, 163, 177, 0.24)',
+            coral: '0 4px 14px 0 rgba(255, 122, 89, 0.3)',
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100%;
+        background-color: #FFF8EF;
+        color: #1B2B34;
+        font-family: 'Poppins', sans-serif;
+      }
+      .pb-safe {
+        padding-bottom: max(env(safe-area-inset-bottom, 0px), 1.5rem);
+      }
+      .pt-safe {
+        padding-top: max(env(safe-area-inset-top, 0px), 1rem);
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-sand text-petrol antialiased min-h-screen flex flex-col items-center select-none">
+<div class="w-full max-w-[390px] min-h-screen flex flex-col px-5 pt-safe pb-safe">
+<!-- 1. HEADER INTERNO -->
+<header class="flex items-center justify-between py-3 mb-2">
+<div class="flex items-center gap-2">
+<h1 class="text-3xl font-bold tracking-tight text-petrol flex items-center">
+          Pari
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-coral ml-1 animate-pulse"></span>
+</h1>
+<span class="text-[11px] font-semibold text-sea bg-sea-light px-2 py-0.5 rounded-full tracking-wide">
+          v1.0
+        </span>
+</div>
+<button aria-label="Informazioni e calcolo quote" class="w-10 h-10 rounded-full bg-white border border-[#E9E4DC] shadow-sm flex items-center justify-center text-petrol hover:bg-sea-light hover:text-sea active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</button>
+</header>
+<main class="flex-1 flex flex-col gap-6">
+<!-- 2. SEZIONE "CHI C'È" -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center justify-between px-0.5">
+<h2 class="text-xs font-bold uppercase tracking-wider text-petrol/70">Chi c'è</h2>
+<span class="text-xs font-semibold text-petrol/60 bg-white/80 px-2.5 py-1 rounded-full border border-[#EDE7DD]">
+            4 persone
+          </span>
+</div>
+<!-- Chips Membri -->
+<div class="flex flex-wrap gap-2">
+<!-- Marco -->
+<div class="inline-flex items-center gap-1.5 pl-3.5 pr-2.5 py-1.5 rounded-full bg-white border border-[#E9E4DC] shadow-sm text-petrol text-xs font-medium transition-transform active:scale-95">
+<span>Marco</span>
+<button aria-label="Rimuovi Marco" class="w-4 h-4 rounded-full flex items-center justify-center text-petrol/40 hover:text-coral transition-colors" type="button">
+<span class="material-symbols-outlined text-[13px]">close</span>
+</button>
+</div>
+<!-- Giulia -->
+<div class="inline-flex items-center gap-1.5 pl-3.5 pr-2.5 py-1.5 rounded-full bg-white border border-[#E9E4DC] shadow-sm text-petrol text-xs font-medium transition-transform active:scale-95">
+<span>Giulia</span>
+<button aria-label="Rimuovi Giulia" class="w-4 h-4 rounded-full flex items-center justify-center text-petrol/40 hover:text-coral transition-colors" type="button">
+<span class="material-symbols-outlined text-[13px]">close</span>
+</button>
+</div>
+<!-- Luca -->
+<div class="inline-flex items-center gap-1.5 pl-3.5 pr-2.5 py-1.5 rounded-full bg-white border border-[#E9E4DC] shadow-sm text-petrol text-xs font-medium transition-transform active:scale-95">
+<span>Luca</span>
+<button aria-label="Rimuovi Luca" class="w-4 h-4 rounded-full flex items-center justify-center text-petrol/40 hover:text-coral transition-colors" type="button">
+<span class="material-symbols-outlined text-[13px]">close</span>
+</button>
+</div>
+<!-- Sara -->
+<div class="inline-flex items-center gap-1.5 pl-3.5 pr-2.5 py-1.5 rounded-full bg-white border border-[#E9E4DC] shadow-sm text-petrol text-xs font-medium transition-transform active:scale-95">
+<span>Sara</span>
+<button aria-label="Rimuovi Sara" class="w-4 h-4 rounded-full flex items-center justify-center text-petrol/40 hover:text-coral transition-colors" type="button">
+<span class="material-symbols-outlined text-[13px]">close</span>
+</button>
+</div>
+</div>
+<!-- Input Aggiungi Amico -->
+<div class="flex gap-2 mt-0.5">
+<input class="flex-1 h-11 px-4 rounded-full bg-white border border-[#E8E2D8] text-sm text-petrol placeholder:text-petrol/40 focus:outline-none focus:border-sea focus:ring-2 focus:ring-sea/20 shadow-sm transition-all" placeholder="Aggiungi un amico" type="text"/>
+<button aria-label="Aggiungi partecipante" class="w-11 h-11 rounded-2xl bg-coral text-white shadow-coral flex items-center justify-center hover:bg-[#F26B49] active:scale-95 transition-all shrink-0" type="button">
+<span class="material-symbols-outlined text-[22px] font-bold">add</span>
+</button>
+</div>
+</section>
+<!-- 3. CARD "NUOVA SPESA" -->
+<section class="rounded-[20px] bg-white border border-[#ECE6DC] p-5 shadow-soft flex flex-col gap-4">
+<div class="flex items-center justify-between pb-3 border-b border-[#F2EDE4]">
+<h3 class="text-base font-bold text-petrol tracking-tight">Nuova spesa</h3>
+<span class="text-[11px] font-medium text-sea bg-sea-light px-2.5 py-0.5 rounded-full">
+            Inserimento rapido
+          </span>
+</div>
+<!-- Field 1: Descrizione -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-medium text-petrol/70 pl-1">Cosa hai comprato</label>
+<input class="h-11 px-4 bg-[#FBF9F5] border border-[#E8E2D8] rounded-xl text-sm text-petrol placeholder:text-petrol/40 focus:bg-white focus:outline-none focus:border-sea focus:ring-2 focus:ring-sea/15 transition-all" placeholder="Es. Cena in spiaggia" type="text"/>
+</div>
+<!-- Field 2 & 3: Importo & Pagato Da -->
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-medium text-petrol/70 pl-1">Importo</label>
+<div class="relative flex items-center">
+<span class="absolute left-3.5 text-sm font-semibold text-petrol/50">€</span>
+<input class="w-full h-11 pl-8 pr-3 bg-[#FBF9F5] border border-[#E8E2D8] rounded-xl text-sm font-semibold text-petrol placeholder:text-petrol/40 focus:bg-white focus:outline-none focus:border-sea focus:ring-2 focus:ring-sea/15 transition-all" inputmode="decimal" placeholder="0,00" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-medium text-petrol/70 pl-1">Pagato da</label>
+<div class="relative flex items-center">
+<select class="w-full h-11 pl-3.5 pr-8 bg-[#FBF9F5] border border-[#E8E2D8] rounded-xl text-sm font-medium text-petrol appearance-none focus:bg-white focus:outline-none focus:border-sea focus:ring-2 focus:ring-sea/15 transition-all cursor-pointer truncate">
+<option selected="">Marco</option>
+<option>Giulia</option>
+<option>Luca</option>
+<option>Sara</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 pointer-events-none text-petrol/50 text-[18px]">
+                expand_more
+              </span>
+</div>
+</div>
+</div>
+<!-- Field 4: Dividi tra -->
+<div class="flex flex-col gap-2 pt-1">
+<label class="text-xs font-medium text-petrol/70 pl-1">Dividi tra (4 selezionati)</label>
+<div class="grid grid-cols-4 gap-1.5">
+<button class="h-8 rounded-full bg-sea text-white text-xs font-medium flex items-center justify-center shadow-xs transition-all hover:opacity-90 active:scale-95 truncate px-1" type="button">
+              Marco
+            </button>
+<button class="h-8 rounded-full bg-sea text-white text-xs font-medium flex items-center justify-center shadow-xs transition-all hover:opacity-90 active:scale-95 truncate px-1" type="button">
+              Giulia
+            </button>
+<button class="h-8 rounded-full bg-sea text-white text-xs font-medium flex items-center justify-center shadow-xs transition-all hover:opacity-90 active:scale-95 truncate px-1" type="button">
+              Luca
+            </button>
+<button class="h-8 rounded-full bg-sea text-white text-xs font-medium flex items-center justify-center shadow-xs transition-all hover:opacity-90 active:scale-95 truncate px-1" type="button">
+              Sara
+            </button>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="mt-2 w-full h-12 bg-sea hover:bg-[#0D8E9B] text-white rounded-full font-semibold text-sm shadow-highlight flex items-center justify-center gap-2 active:scale-[0.98] transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>Aggiungi spesa</span>
+</button>
+</section>
+<!-- 4. SEZIONE "SPESE" -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-xs font-bold uppercase tracking-wider text-petrol/70">Spese</h2>
+<div class="flex items-baseline gap-1.5">
+<span class="text-xs font-medium text-petrol/50">Totale:</span>
+<span class="text-lg font-bold text-petrol tracking-tight">270,00 €</span>
+</div>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-3.5 bg-white border border-[#ECE6DC] rounded-2xl shadow-soft hover:border-sea/30 transition-all">
+<div class="flex flex-col min-w-0 pr-2">
+<span class="text-sm font-semibold text-petrol truncate">Cena in spiaggia</span>
+<span class="text-xs text-petrol/60 mt-0.5">pagato da Marco · 4 quote</span>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="text-sm font-bold text-petrol tracking-tight">120,00 €</span>
+<button aria-label="Elimina spesa" class="w-7 h-7 rounded-full flex items-center justify-center text-petrol/30 hover:text-coral hover:bg-red-50 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-3.5 bg-white border border-[#ECE6DC] rounded-2xl shadow-soft hover:border-sea/30 transition-all">
+<div class="flex flex-col min-w-0 pr-2">
+<span class="text-sm font-semibold text-petrol truncate">Noleggio auto</span>
+<span class="text-xs text-petrol/60 mt-0.5">pagato da Giulia · 4 quote</span>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="text-sm font-bold text-petrol tracking-tight">90,00 €</span>
+<button aria-label="Elimina spesa" class="w-7 h-7 rounded-full flex items-center justify-center text-petrol/30 hover:text-coral hover:bg-red-50 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between p-3.5 bg-white border border-[#ECE6DC] rounded-2xl shadow-soft hover:border-sea/30 transition-all">
+<div class="flex flex-col min-w-0 pr-2">
+<span class="text-sm font-semibold text-petrol truncate">Spesa al supermercato</span>
+<span class="text-xs text-petrol/60 mt-0.5">pagato da Luca · 4 quote</span>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="text-sm font-bold text-petrol tracking-tight">60,00 €</span>
+<button aria-label="Elimina spesa" class="w-7 h-7 rounded-full flex items-center justify-center text-petrol/30 hover:text-coral hover:bg-red-50 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. CARD "CONTI DA SALDARE" (ELEMENTO PRINCIPALE) -->
+<section class="rounded-[20px] bg-sea text-white p-5 shadow-highlight flex flex-col gap-4 relative overflow-hidden">
+<!-- Decorazione estiva leggera -->
+<div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/5 pointer-events-none"></div>
+<div class="flex items-center justify-between pb-3 border-b border-white/20">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-white">sync_alt</span>
+</div>
+<h3 class="text-base font-bold text-white tracking-tight">Conti da saldare</h3>
+</div>
+<span class="text-[10px] font-semibold tracking-wide uppercase px-2.5 py-1 rounded-full bg-white/15 text-white/90">
+            Algoritmo Min-Transfer
+          </span>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- Debt Row 1 -->
+<div class="flex items-center justify-between p-3 rounded-2xl bg-white shadow-sm text-petrol">
+<div class="flex items-center gap-2.5 pl-1">
+<span class="text-sm font-bold text-petrol">Sara</span>
+<span class="material-symbols-outlined text-[16px] text-sea">arrow_forward</span>
+<span class="text-sm font-bold text-petrol">Marco</span>
+</div>
+<span class="px-3 py-1 rounded-full bg-coral text-white text-xs font-bold shadow-coral">
+              52,50 €
+            </span>
+</div>
+<!-- Debt Row 2 -->
+<div class="flex items-center justify-between p-3 rounded-2xl bg-white shadow-sm text-petrol">
+<div class="flex items-center gap-2.5 pl-1">
+<span class="text-sm font-bold text-petrol">Sara</span>
+<span class="material-symbols-outlined text-[16px] text-sea">arrow_forward</span>
+<span class="text-sm font-bold text-petrol">Giulia</span>
+</div>
+<span class="px-3 py-1 rounded-full bg-coral text-white text-xs font-bold shadow-coral">
+              15,00 €
+            </span>
+</div>
+<!-- Debt Row 3 -->
+<div class="flex items-center justify-between p-3 rounded-2xl bg-white shadow-sm text-petrol">
+<div class="flex items-center gap-2.5 pl-1">
+<span class="text-sm font-bold text-petrol">Luca</span>
+<span class="material-symbols-outlined text-[16px] text-sea">arrow_forward</span>
+<span class="text-sm font-bold text-petrol">Giulia</span>
+</div>
+<span class="px-3 py-1 rounded-full bg-coral text-white text-xs font-bold shadow-coral">
+              7,50 €
+            </span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 text-[11px] font-medium text-white/80">
+<span>Quota a testa: 67,50 €</span>
+<span>· 3 transazioni nette</span>
+</div>
+</section>
+<!-- 6. AZIONE SECONDARIA -->
+<div class="mt-1 mb-6 flex flex-col items-center gap-2">
+<button class="w-full h-11 rounded-full border border-coral/50 bg-white/70 text-coral hover:bg-coral hover:text-white font-semibold text-xs transition-all flex items-center justify-center gap-2 active:scale-[0.98] shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+<span>Azzera spese</span>
+</button>
+<span class="text-[11px] text-petrol/50 font-normal">
+          Cancella tutte le transazioni registrate
+        </span>
+</div>
+</main>
+</div>
+</body></html>
